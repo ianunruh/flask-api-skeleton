@@ -10,7 +10,7 @@ env:
 cache: pip
 
 install:
-  - pip install -r requirements.txt -r test-requirements.txt
+  - pip install -U -r requirements.txt -r test-requirements.txt
 
 before_script:
   - mysql -e 'CREATE DATABASE backend_test;'
