@@ -7,7 +7,7 @@ env:
   - BACKEND_CONFIG=ci/config.yml
 
 install:
-  - pip install tox
+  - pip install -U flake8 tox
 
 before_script:
   - mysql -e 'CREATE DATABASE backend_test;'
