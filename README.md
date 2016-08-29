@@ -5,13 +5,15 @@
 
 ## Requirements
 
-* Python 3.5+
+* Python 2.7+ or 3.5+
 
 ## Development
 
 ```bash
-git clone git@github.com:ianunruh/flask-api-skeleton.git
-cd flask-api-skeleton
+git clone https://github.com/ianunruh/flask-api-skeleton.git myapp
+cd myapp
+
+cp config.sample.yml config.yml
 
 pip install -U -r requirements.txt
 
