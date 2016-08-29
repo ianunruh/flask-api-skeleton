@@ -9,12 +9,9 @@ services:
 env:
   global:
     - BACKEND_CONFIG=ci/config.yml
-  matrix:
-    - TOXENV=py27
-    - TOXENV=py35
 
 install:
-  - pip install -U flake8 tox
+  - pip install -U flake8 tox tox-travis
 
 before_script:
   - mysql -e 'CREATE DATABASE backend_test;'
