@@ -1,0 +1,21 @@
+language: python
+
+services:
+  - mysql
+
+env:
+  - BACKEND_CONFIG=ci/config.yml
+
+install:
+  - pip install tox
+
+before_script:
+  - mysql -e 'CREATE DATABASE backend_test;'
+  - flake8 backend/
+
+script:
+  - tox
+
+env:
+  - TOXENV=py27
+  - TOXENV=py35
