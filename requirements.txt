@@ -1,0 +1,9 @@
+Flask
+Flask-CORS
+Flask-Migrate
+Flask-Script
+Flask-SQLAlchemy
+marshmallow
+passlib
+PyYAML
+sqlalchemy-utils

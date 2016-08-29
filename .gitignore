@@ -1,0 +1,10 @@
+config.yml
+
+# Python artifacts
+.cache
+.tox
+*.pyc
+__pycache__
+*.egg-info
+htmlcov
+.coverage
