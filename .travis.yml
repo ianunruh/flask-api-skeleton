@@ -7,16 +7,14 @@ env:
   global:
     - BACKEND_CONFIG=ci/config.yml
 
-cache:
-  directories:
-    - $HOME/.pip-cache
+cache: pip
 
 install:
-  - pip install -r requirements.txt -r test-requirements.txt --cache-dir $HOME/.pip-cache
+  - pip install -r requirements.txt -r test-requirements.txt
 
 before_script:
   - mysql -e 'CREATE DATABASE backend_test;'
-  - python manage.py db migrate
+  - python manage.py db upgrade
 
 script:
   - flake8 --exit-zero backend
