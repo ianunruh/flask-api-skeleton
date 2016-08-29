@@ -52,6 +52,7 @@ def create_session(data):
 
     return session
 
+
 @app.route('/sessions/<id>', methods=['DELETE'])
 @auth_required
 def delete_session(id):
