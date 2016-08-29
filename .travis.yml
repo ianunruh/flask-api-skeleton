@@ -4,18 +4,21 @@ services:
   - mysql
 
 env:
-  - BACKEND_CONFIG=ci/config.yml
+  global:
+    - BACKEND_CONFIG=ci/config.yml
+  matrix:
+    - TOXENV=py27
+    - TOXENV=py35
 
 install:
   - pip install -U flake8 tox
 
 before_script:
   - mysql -e 'CREATE DATABASE backend_test;'
-  - flake8 backend/
+  - flake8 --exit-zero backend
 
 script:
   - tox
 
-env:
-  - TOXENV=py27
-  - TOXENV=py35
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
