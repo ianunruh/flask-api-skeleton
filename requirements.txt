@@ -3,8 +3,11 @@ Flask-CORS
 Flask-Migrate
 Flask-Script
 Flask-SQLAlchemy
+future
 marshmallow
 passlib
 pymysql
 PyYAML
+requests
+six
 sqlalchemy-utils
