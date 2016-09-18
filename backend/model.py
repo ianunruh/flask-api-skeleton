@@ -25,6 +25,7 @@ class User(db.Model):
     updated_at = db.Column(db.DateTime, default=datetime.utcnow)
     password_changed_at = db.Column(db.DateTime)
 
+    identities = db.relationship('Identity', backref='user', lazy='dynamic')
     sessions = db.relationship('Session', backref='user', lazy='dynamic')
 
     @classmethod
@@ -36,6 +37,21 @@ class User(db.Model):
     def change_password(self, password):
         self.password = password
         self.password_changed_at = datetime.utcnow()
+
+
+class Identity(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+
+    provider = db.Column(db.String(255), nullable=False)
+    provider_user_id = db.Column(db.String(255), nullable=False)
+
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    last_used_at = db.Column(db.DateTime)
+
+    __table_args__ = (
+        db.UniqueConstraint('provider', 'provider_user_id', name='uniq_provider_user_id'),
+    )
 
 
 class Session(db.Model):
